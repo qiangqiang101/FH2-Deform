@@ -1,0 +1,76 @@
+# FH2Deform: French. A first draft, not yet checked by a native speaker: corrections are welcome.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"X-Domain: FH2Deform\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr "Les voitures se froissent davantage en cas d'accident : bosses plus profondes, bosses à l'endroit du choc, tôles froissées, éraflures qui aplatissent la carrosserie et vitres qui sautent."
+
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr "Déformation renforcée"
+
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr "Les voitures se froissent davantage en cas d'accident. Désactivé : les dégâts d'origine du jeu."
+
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr "Pièces qui tombent"
+
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr "Les pièces de votre voiture peuvent tomber lors de gros accidents, comme celles des voitures IA. Désactivé : elles restent en place, même écrasées (comme dans le jeu)."
+
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr "Multiplicateur d'impact"
+
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr "Combien chaque choc compte de plus pour les dégâts du jeu : 2,0 équivaut à un choc deux fois plus fort. Une bosse ne peut pas dépasser la forme écrasée de la voiture. Pris en compte au prochain démarrage."
+
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr "Profondeur des bosses"
+
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr "Profondeur d'une bosse : 2,0 l'enfonce deux fois plus que la forme écrasée de la voiture."
+
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr "Bosses au point d'impact"
+
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr "Enfonce la carrosserie là où elle a été touchée, même là où la voiture n'a pas de forme écrasée propre. 0 désactive."
+
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr "Froissement"
+
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr "Ondulations sur les tôles abîmées, pour qu'elles paraissent froissées et non enfoncées uniformément. 0 désactive."
+
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr "Bosses d'éraflure"
+
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr "Les éraflures aplatissent aussi un peu la carrosserie, pas seulement la peinture. 0 désactive."
+
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr "Seuil de bris de vitre"
+
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr "Les vitres sautent là où les dégâts dépassent cette valeur (de 0,05 à 1) : plus bas, elles cassent plus tôt. 1,00 : elles restent."

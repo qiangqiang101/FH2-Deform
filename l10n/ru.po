@@ -1,0 +1,76 @@
+# FH2Deform: Russian. A first draft, not yet checked by a native speaker: corrections are welcome.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"X-Domain: FH2Deform\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr "Машины сильнее сминаются при авариях: более глубокие вмятины, вмятины в месте удара, смятые панели, царапины, сплющивающие кузов, и вылетающие стёкла."
+
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr "Усиленная деформация"
+
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr "Машины сильнее сминаются при авариях. Выкл.: обычные повреждения игры."
+
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr "Отлетают детали"
+
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr "Детали вашей машины могут отлетать при сильных авариях, как у машин ИИ. Выкл.: они остаются на месте, как бы ни были смяты (как в игре)."
+
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr "Множитель удара"
+
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr "Насколько сильнее каждый удар учитывается в повреждениях игры: 2,0 — как удар вдвое сильнее. Вмятина не бывает глубже смятой формы самой машины. Действует после следующего запуска."
+
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr "Глубина вмятин"
+
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr "Насколько глубока вмятина: 2,0 вдавливает её вдвое глубже смятой формы самой машины."
+
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr "Вмятины в месте удара"
+
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr "Вдавливает кузов там, где был удар, даже где у машины нет своей смятой формы. 0 — выкл."
+
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr "Сминание"
+
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr "Волны на повреждённых панелях, чтобы они выглядели смятыми, а не равномерно вдавленными. 0 — выкл."
+
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr "Вмятины от царапин"
+
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr "Царапины немного сплющивают и кузов, а не только краску. 0 — выкл."
+
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr "Стёкла бьются при"
+
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr "Стёкла вылетают там, где повреждение выше этого значения (от 0,05 до 1): ниже — разбиваются раньше. 1,00: остаются."

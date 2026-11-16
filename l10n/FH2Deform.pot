@@ -1,0 +1,125 @@
+# FH2Deform: the English text to translate, from tools/l10n/extract.py. Don't edit this file: run it again.
+# Translate it into l10n/<language>.po (pl.po, pt_BR.po): docs/translating.md in the FH2 Mod Platform.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: FH2Deform\n"
+
+#: src/deform_mod.cpp:829
+#, max-length:450
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr ""
+
+#. the main switch on the mod's page
+#: src/deform_mod.cpp:854
+#, max-length:30
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr ""
+
+#. what the main switch does
+#: src/deform_mod.cpp:856
+#, max-length:450
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr ""
+
+#. switch for parts coming off the player's car
+#: src/deform_mod.cpp:867
+#, max-length:30
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr ""
+
+#. what the switch does
+#: src/deform_mod.cpp:869
+#, max-length:450
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr ""
+
+#. slider for how hard every hit counts
+#: src/deform_mod.cpp:896
+#, max-length:26
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:898
+#, max-length:450
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr ""
+
+#. slider for how deep dents go
+#: src/deform_mod.cpp:913
+#, max-length:26
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:915
+#, max-length:450
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr ""
+
+#. slider for dents where the car was hit
+#: src/deform_mod.cpp:919
+#, max-length:26
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:921
+#, max-length:450
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr ""
+
+#. slider for ripples in damaged panels
+#: src/deform_mod.cpp:925
+#, max-length:26
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:927
+#, max-length:450
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr ""
+
+#. slider for dents from scraping along a wall
+#: src/deform_mod.cpp:931
+#, max-length:26
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:933
+#, max-length:450
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr ""
+
+#. slider for when windows pop out
+#: src/deform_mod.cpp:937
+#, max-length:26
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr ""
+
+#. what the slider does
+#: src/deform_mod.cpp:939
+#, max-length:450
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr ""

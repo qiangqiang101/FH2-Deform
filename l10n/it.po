@@ -1,0 +1,76 @@
+# FH2Deform: Italian. A first draft, not yet checked by a native speaker: corrections are welcome.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"X-Domain: FH2Deform\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr "Le auto si accartocciano di più negli incidenti: ammaccature più profonde, ammaccature dove l'auto è stata colpita, pannelli stropicciati, strisciate che appiattiscono la carrozzeria e vetri che saltano."
+
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr "Deformazione potenziata"
+
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr "Le auto si accartocciano di più negli incidenti. Disattivato: i danni originali del gioco."
+
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr "Pezzi che si staccano"
+
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr "I pezzi della tua auto possono staccarsi negli incidenti gravi, come quelli delle auto IA. Disattivato: restano al loro posto per quanto schiacciati (come nel gioco)."
+
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr "Moltiplicatore d'impatto"
+
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr "Quanto conta di più ogni colpo per i danni del gioco: 2,0 è come un colpo due volte più forte. Un'ammaccatura non supera la forma schiacciata dell'auto. Vale dal prossimo avvio."
+
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr "Profondità ammaccature"
+
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr "Quanto è profonda un'ammaccatura: 2,0 la spinge il doppio della forma schiacciata dell'auto."
+
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr "Ammaccature nel punto"
+
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr "Spinge dentro la carrozzeria dove è stata colpita, anche dove l'auto non ha una forma schiacciata propria. 0 disattiva."
+
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr "Accartocciamento"
+
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr "Increspature sui pannelli danneggiati, perché sembrino stropicciati e non spinti dentro in modo uniforme. 0 disattiva."
+
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr "Ammaccature da strisciata"
+
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr "Le strisciate appiattiscono un po' anche la carrozzeria, non solo la vernice. 0 disattiva."
+
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr "Rottura dei vetri da"
+
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr "I vetri saltano dove il danno supera questo valore (da 0,05 a 1): più basso, si rompono prima. 1,00: restano."

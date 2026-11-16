@@ -1,0 +1,76 @@
+# FH2Deform: Spanish. A first draft, not yet checked by a native speaker: corrections are welcome.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"X-Domain: FH2Deform\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr "Los coches se abollan más en los choques: abolladuras más profundas, abolladuras donde se golpeó el coche, paneles arrugados, roces que aplastan la carrocería y lunas que saltan."
+
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr "Deformación reforzada"
+
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr "Los coches se abollan más en los choques. Desactivado: el daño original del juego."
+
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr "Piezas que se caen"
+
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr "Las piezas de tu coche pueden caerse en choques fuertes, como las de los coches de la IA. Desactivado: se quedan puestas por muy aplastadas que estén (como en el juego)."
+
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr "Multiplicador de impacto"
+
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr "Cuánto más cuenta cada golpe para el daño del juego: 2,0 es como un golpe el doble de fuerte. Una abolladura no puede ser más profunda que la forma aplastada del propio coche. Se aplica en el próximo inicio."
+
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr "Profundidad de abolladura"
+
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr "Qué profunda es una abolladura: 2,0 la hunde el doble que la forma aplastada del propio coche."
+
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr "Abolladuras donde golpea"
+
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr "Hunde la carrocería donde recibió el golpe, incluso donde el coche no tiene forma aplastada propia. 0 lo desactiva."
+
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr "Arrugas"
+
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr "Ondulaciones en los paneles dañados, para que parezcan arrugados y no hundidos por igual. 0 lo desactiva."
+
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr "Abolladuras por roce"
+
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr "Los roces también aplastan un poco la carrocería, no solo la pintura. 0 lo desactiva."
+
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr "Rotura de lunas desde"
+
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr "Las lunas saltan donde el daño supera este valor (de 0,05 a 1): más bajo, se rompen antes. 1,00: se quedan."

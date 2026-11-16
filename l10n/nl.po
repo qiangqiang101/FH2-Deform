@@ -1,0 +1,76 @@
+# FH2Deform: Dutch. A first draft, not yet checked by a native speaker: corrections are welcome.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"X-Domain: FH2Deform\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "mod.description"
+msgid "Cars crumple more when they crash: deeper dents, dents where the car was hit, crumpled panels, scrapes that flatten the body, and windows that pop out."
+msgstr "Auto's kreuken harder bij ongelukken: diepere deuken, deuken waar de auto geraakt is, gekreukte panelen, schaafplekken die de carrosserie platdrukken en ruiten die eruit knallen."
+
+msgctxt "row.Enabled.label"
+msgid "Stronger Deformation"
+msgstr "Sterkere vervorming"
+
+msgctxt "row.Enabled.description"
+msgid "Cars crumple more when they crash. Off: the game's own damage."
+msgstr "Auto's kreuken harder bij ongelukken. Uit: de schade van het spel zelf."
+
+msgctxt "row.PartsFallOff.label"
+msgid "Parts Fall Off"
+msgstr "Onderdelen vallen eraf"
+
+msgctxt "row.PartsFallOff.description"
+msgid "Your car's parts can come off in heavy crashes, as the AI cars' do. Off: they stay on however crushed (the game's own)."
+msgstr "Onderdelen van je auto kunnen er bij zware ongelukken afvallen, zoals bij de AI-auto's. Uit: ze blijven zitten, hoe verbrijzeld ook (zoals in het spel)."
+
+msgctxt "row.ImpactMultiplier.label"
+msgid "Impact Multiplier"
+msgstr "Botsvermenigvuldiger"
+
+msgctxt "row.ImpactMultiplier.description"
+msgid "How much harder every hit counts for the game's own damage: 2.0 is like a hit twice as hard. A dent can't go deeper than the car's own crushed shape. Applies at the next start."
+msgstr "Hoeveel harder elke klap meetelt voor de schade van het spel: 2,0 is als een klap twee keer zo hard. Een deuk wordt nooit dieper dan de vervormde vorm van de auto. Geldt na de volgende start."
+
+msgctxt "row.DentDepth.label"
+msgid "Dent Depth"
+msgstr "Deukdiepte"
+
+msgctxt "row.DentDepth.description"
+msgid "How deep a dent goes: 2.0 pushes it in twice as far as the car's own crushed shape."
+msgstr "Hoe diep een deuk gaat: 2,0 drukt hem twee keer zo ver in als de vervormde vorm van de auto."
+
+msgctxt "row.DentsWhereHit.label"
+msgid "Dents Where Hit"
+msgstr "Deuken waar geraakt"
+
+msgctxt "row.DentsWhereHit.description"
+msgid "Pushes the body in wherever it was hit, also where the car has no crushed shape of its own. 0 is off."
+msgstr "Drukt de carrosserie in waar die geraakt is, ook waar de auto geen eigen vervormde vorm heeft. 0 is uit."
+
+msgctxt "row.Crumple.label"
+msgid "Crumple"
+msgstr "Kreuken"
+
+msgctxt "row.Crumple.description"
+msgid "Ripples in damaged panels, so they look crumpled rather than evenly pushed in. 0 is off."
+msgstr "Rimpels in beschadigde panelen, zodat ze gekreukt lijken in plaats van gelijkmatig ingedrukt. 0 is uit."
+
+msgctxt "row.ScrapeDents.label"
+msgid "Scrape Dents"
+msgstr "Schaafdeuken"
+
+msgctxt "row.ScrapeDents.description"
+msgid "Scrapes flatten the body a little too, not only the paint. 0 is off."
+msgstr "Schaafplekken drukken de carrosserie ook een beetje plat, niet alleen de lak. 0 is uit."
+
+msgctxt "row.GlassBreaksAt.label"
+msgid "Glass Breaks At"
+msgstr "Ruit breekt bij"
+
+msgctxt "row.GlassBreaksAt.description"
+msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
+msgstr "Ruiten knallen eruit waar de schade hierboven ligt (0,05 tot 1): lager breekt ze eerder. 1,00: ze blijven zitten."
