@@ -74,3 +74,11 @@ msgstr "Rottura dei vetri da"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "I vetri saltano dove il danno supera questo valore (da 0,05 a 1): più basso, si rompono prima. 1,00: restano."
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "Log di debug"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "Scrive righe extra in platform.log: ogni colpo, pezzo staccato e spinta. Lascialo disattivato a meno che tu non debba segnalare un problema."

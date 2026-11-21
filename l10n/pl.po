@@ -74,3 +74,11 @@ msgstr "Próg pękania szyb"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "Szyby wypadają tam, gdzie uszkodzenie przekracza tę wartość (od 0,05 do 1): niżej pękają szybciej. 1,00: zostają."
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "Dziennik debugowania"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "Zapisuje dodatkowe wiersze w platform.log: każde uderzenie, odpadnięcie części i pchnięcie. Zostaw wyłączone, chyba że zgłaszasz problem."

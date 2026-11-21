@@ -74,3 +74,11 @@ msgstr "Seuil de bris de vitre"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "Les vitres sautent là où les dégâts dépassent cette valeur (de 0,05 à 1) : plus bas, elles cassent plus tôt. 1,00 : elles restent."
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "Journal de débogage"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "Écrit des lignes supplémentaires dans platform.log : chaque choc, pièce tombée et poussée. À laisser désactivé sauf pour signaler un problème."

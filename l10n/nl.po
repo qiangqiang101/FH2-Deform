@@ -74,3 +74,11 @@ msgstr "Ruit breekt bij"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "Ruiten knallen eruit waar de schade hierboven ligt (0,05 tot 1): lager breekt ze eerder. 1,00: ze blijven zitten."
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "Debuglogboek"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "Schrijft extra regels in platform.log: elke klap, afgevallen onderdeel en duw. Laat uit, tenzij je een probleem meldt."

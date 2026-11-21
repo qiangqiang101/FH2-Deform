@@ -74,3 +74,11 @@ msgstr "Rotura de lunas desde"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "Las lunas saltan donde el daño supera este valor (de 0,05 a 1): más bajo, se rompen antes. 1,00: se quedan."
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "Registro de depuración"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "Escribe líneas extra en platform.log: cada golpe, pieza caída y empujón. Déjalo desactivado salvo que vayas a informar de un problema."

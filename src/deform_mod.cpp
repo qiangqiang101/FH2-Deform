@@ -44,6 +44,8 @@ static int g_glass_extra = 0;         // [Test] GlassExtra: extra family names t
 static int g_test_all_variants = 0;   // 1 plain + Morphing + Skinning, 2 plain + Morphing, 3 Morphing + Skinning
 static bool g_test_join_push = false;   // [Test] in the ini, for finding the black paint
 
+static std::atomic<unsigned long> g_apply_tid{0};   // the thread that writes the shader files (the probe skips its own reads)
+static std::atomic<bool> g_debug{false};   // Settings > Debug Logging: the per-event lines in platform.log
 static std::atomic<bool> g_enabled{true};
 static std::atomic<bool> g_parts_fall_off{true};   // the player's car drops parts as the AI cars do
 static std::atomic<float> g_impact_mult{2.0f};   // CarDamageScalar x this
@@ -85,6 +87,9 @@ static void logf(const char* fmt, ...) {
     g_api->log(g_mod, buf);
 }
 
+// The lines that come with every hit, push or part drop: only with Debug Logging on.
+#define logd(...) do { if (g_debug.load()) logf(__VA_ARGS__); } while (0)
+
 // ---- settings: fh2-mods\FH2Deform.ini ----
 static float read_float(const wchar_t* key, float def, float lo, float hi) {
     wchar_t dflt[32], buf[32];
@@ -103,6 +108,7 @@ static void load_config() {
     if (!g_ini[0]) return;
     g_enabled.store(GetPrivateProfileIntW(L"Settings", L"Enabled", 1, g_ini) != 0);
     g_parts_fall_off.store(GetPrivateProfileIntW(L"Settings", L"PartsFallOff", 1, g_ini) != 0);
+    g_debug.store(GetPrivateProfileIntW(L"Settings", L"Debug", 0, g_ini) != 0);
     g_hit_keys.store(GetPrivateProfileIntW(L"Settings", L"HitKeys", 1, g_ini) != 0);
     g_test_all_variants = static_cast<int>(GetPrivateProfileIntW(L"Test", L"TestAllVariants", 0, g_ini));
     { wchar_t w[256] = L""; GetPrivateProfileStringW(L"Test", L"HideList", L"", w, 256, g_ini);
@@ -127,6 +133,7 @@ static void save_config() {
     if (!g_ini[0]) return;
     WritePrivateProfileStringW(L"Settings", L"Enabled", g_enabled.load() ? L"1" : L"0", g_ini);
     WritePrivateProfileStringW(L"Settings", L"PartsFallOff", g_parts_fall_off.load() ? L"1" : L"0", g_ini);
+    WritePrivateProfileStringW(L"Settings", L"Debug", g_debug.load() ? L"1" : L"0", g_ini);
     WritePrivateProfileStringW(L"Settings", L"HitKeys", g_hit_keys.load() ? L"1" : L"0", g_ini);
     write_float(L"HitStrength", g_hit_strength.load());
     write_float(L"PushSpeed", g_push_speed.load());
@@ -234,6 +241,7 @@ static bool is_glass_family(const std::string& low) {
 // Every ...Morphing .durango.vso in media\_library\Shaders.zip, patched (or the game's own again), handed over as
 // _library/Shaders/<family>/<name>.
 static void apply_shaders() {
+    g_apply_tid.store(GetCurrentThreadId());
     if (!g_api || !g_mod || g_api->api_version < 2 || !g_api->set_file) return;
     if (!g_api->game_dir || !g_api->game_dir[0]) {
         logf("shaders: the game's folder isn't known; nothing changed.");
@@ -427,7 +435,7 @@ static DropRoutineFn g_drop_routine_orig = nullptr;
 static std::atomic<int> g_drop_logged{0};
 static void drop_routine_detour(void* car, void* part, uint8_t mode) {
     if (g_drop_logged.fetch_add(1) < 40)
-        logf("part drop event: car %p kind %d, mode %u, part type %d", car,
+        logd("part drop event: car %p kind %d, mode %u, part type %d", car,
              *reinterpret_cast<int32_t*>(static_cast<char*>(car) + 0x4D08), mode,
              *reinterpret_cast<int32_t*>(static_cast<char*>(part) + 0xA0));
     g_drop_routine_orig(car, part, mode);
@@ -523,7 +531,7 @@ static void do_hit(void* car, int side) {
     t_our_hit = true;
     reinterpret_cast<ApplyDamageFn>(vt[0x190 / 8])(pres, q, where, 0.0f, b, b * 0.5f, 8);
     t_our_hit = false;
-    logf("hit: %s of your car, strength %.1f, at (%.2f, %.2f, %.2f) in the car's space.", kNames[side], b, where[0],
+    logd("hit: %s of your car, strength %.1f, at (%.2f, %.2f, %.2f) in the car's space.", kNames[side], b, where[0],
          where[1], where[2]);
     g_hits_done.fetch_add(1);
 }
@@ -566,14 +574,14 @@ static void do_push(void* car, int dir) {
     alignas(16) float nv[4] = {v[0] + d[0] * sp, v[1] + d[1] * sp, v[2] + d[2] * sp, v[3]};
     reinterpret_cast<void (*)(void*, const float*)>(vt[0x290 / 8])(dyn, nv);
     static const char* kN[] = {"forward", "back", "right", "left"};
-    logf("push: %s by %.1f m/s, along (%.2f %.2f %.2f)", kN[dir], sp, d[0], d[1], d[2]);
+    logd("push: %s by %.1f m/s, along (%.2f %.2f %.2f)", kN[dir], sp, d[0], d[1], d[2]);
 }
 static void do_pose(void* car) {
     void* dyn; void** vt;
     if (!car_dyn(car, dyn, vt)) { logf("pose: not the dynamics I know"); return; }
     alignas(16) float v[4];
     reinterpret_cast<float* (*)(void*, float*)>(vt[0x288 / 8])(dyn, v);
-    logf("pose: velocity %.2f %.2f %.2f; looking for a rotation matrix in the car and its dynamics", v[0], v[1], v[2]);
+    logd("pose: velocity %.2f %.2f %.2f; looking for a rotation matrix in the car and its dynamics", v[0], v[1], v[2]);
     // rows of 16 bytes: three that are unit length (xyz) and at right angles to each other
     const struct { const char* name; const char* at; } areas[] = {{"dyn-0x3A0", static_cast<char*>(dyn) - 0x3A0}, {"car", static_cast<char*>(car)}};
     for (const auto& ar : areas) {
@@ -586,7 +594,7 @@ static void do_pose(void* car) {
                 auto dot = [](const float* a, const float* b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; };
                 if (!(std::fabs(len2(r0) - 1) < 0.01f && std::fabs(len2(r1) - 1) < 0.01f && std::fabs(len2(r2) - 1) < 0.01f)) continue;
                 if (std::fabs(dot(r0, r1)) > 0.02f || std::fabs(dot(r1, r2)) > 0.02f || std::fabs(dot(r0, r2)) > 0.02f) continue;
-                logf("pose: %s+0x%X rows (%.2f %.2f %.2f) (%.2f %.2f %.2f) (%.2f %.2f %.2f)", ar.name, off, r0[0], r0[1], r0[2],
+                logd("pose: %s+0x%X rows (%.2f %.2f %.2f) (%.2f %.2f %.2f) (%.2f %.2f %.2f)", ar.name, off, r0[0], r0[1], r0[2],
                      r1[0], r1[1], r1[2], r2[0], r2[1], r2[2]);
             }
         } __except (EXCEPTION_EXECUTE_HANDLER) {}
@@ -611,6 +619,49 @@ static void pose_command(void*, const char*, const char*, char* reply, size_t n)
     snprintf(reply, n, "asked (see platform.log)");
 }
 
+// Testing: which shader files (and what else under Shaders) the game opens. Hooks CreateFileW; `shaderuse` writes the list to
+// fh2-mods\FH2Deform-shaderuse.txt.
+#include <set>
+static std::mutex g_open_mu;
+static std::set<std::string> g_opened;
+static HANDLE (WINAPI* g_create_file_orig)(LPCWSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE) = nullptr;
+static HANDLE WINAPI create_file_detour(LPCWSTR name, DWORD access, DWORD share, LPSECURITY_ATTRIBUTES sa, DWORD disp, DWORD flags, HANDLE tmpl) {
+    HANDLE r = g_create_file_orig(name, access, share, sa, disp, flags, tmpl);
+    if (name && (access & GENERIC_READ || access & FILE_READ_DATA) && !(access & (GENERIC_WRITE | FILE_WRITE_DATA)) && wcsstr(name, L"Shaders") && GetCurrentThreadId() != g_apply_tid.load()) {
+        char buf[MAX_PATH];
+        WideCharToMultiByte(CP_UTF8, 0, name, -1, buf, sizeof buf, nullptr, nullptr);
+        std::lock_guard<std::mutex> lk(g_open_mu);
+        g_opened.insert(buf);
+    }
+    return r;
+}
+static void shaderuse_command(void*, const char*, const char*, char* reply, size_t n) {
+    wchar_t out[MAX_PATH];
+    wcscpy_s(out, g_ini);
+    if (wchar_t* sl = wcsrchr(out, L'\\')) *sl = 0;
+    wcscat_s(out, L"\\FH2Deform-shaderuse.txt");
+    size_t count = 0;
+    FILE* fp = nullptr;
+    _wfopen_s(&fp, out, L"wb");
+    {
+        std::lock_guard<std::mutex> lk(g_open_mu);
+        count = g_opened.size();
+        if (fp) for (const std::string& o : g_opened) fprintf(fp, "%s\n", o.c_str());
+    }
+    if (fp) fclose(fp);
+    snprintf(reply, n, "%zu paths under Shaders opened for reading (FH2Deform-shaderuse.txt)", count);
+}
+static void install_open_probe() {
+    if (GetPrivateProfileIntW(L"Test", L"ShaderProbe", 0, g_ini) == 0) return;   // testing only: it dies with some other hooks
+    void* target = reinterpret_cast<void*>(GetProcAddress(GetModuleHandleW(L"kernelbase.dll"), "CreateFileW"));
+    if (!target) return;
+    FH2Hook* h = g_api->hook_function(g_mod, "CreateFileW (shader use)", target, reinterpret_cast<void*>(&create_file_detour),
+                                      reinterpret_cast<void**>(&g_create_file_orig));
+    if (h) g_api->enable_hooks(g_mod, h);
+    if (g_api->api_version >= 9 && g_api->add_command)
+        g_api->add_command(g_mod, "shaderuse", "shaderuse: lists the shader files the game opened (testing)", shaderuse_command, nullptr);
+}
+
 // fh2mod FH2Deform hitraw A B C FLAGS X Y Z: ApplyDamage with these exact values (testing)
 static std::atomic<bool> g_raw_pending{false};
 static float g_raw[7] = {};
@@ -624,7 +675,7 @@ static void do_raw_hit(void* car) {
     t_our_hit = true;
     reinterpret_cast<ApplyDamageFn>(vt[0x190 / 8])(pres, q, where, g_raw[0], g_raw[1], g_raw[2], g_raw_flags);
     t_our_hit = false;
-    logf("hitraw: a %.3f b %.3f c %.3f flags %d at (%.2f, %.2f, %.2f)", g_raw[0], g_raw[1], g_raw[2], g_raw_flags, where[0],
+    logd("hitraw: a %.3f b %.3f c %.3f flags %d at (%.2f, %.2f, %.2f)", g_raw[0], g_raw[1], g_raw[2], g_raw_flags, where[0],
          where[1], where[2]);
     g_hits_done.fetch_add(1);
 }
@@ -691,7 +742,7 @@ static void apply_damage_detour(void* self, uint64_t q, const float* where, floa
     void* car = g_player_car.load();
     if (!t_our_hit && car && self == *reinterpret_cast<void**>(static_cast<char*>(car) + 0x4D38) &&
         g_real_hits_logged.fetch_add(1) < 30) {
-        logf("real hit on your car: a %.3f b %.3f c %.3f flags %d at (%.2f, %.2f, %.2f) in the car's space", a, b, c,
+        logd("real hit on your car: a %.3f b %.3f c %.3f flags %d at (%.2f, %.2f, %.2f) in the car's space", a, b, c,
              flags, where[0], where[1], where[2]);
     }
     g_apply_damage_orig(self, q, where, a, b, c, flags);
@@ -767,6 +818,9 @@ static void on_setting_changed(void*, const char* key, int value) {
         apply_surfaces();   // written now, read by the game when it next starts
         request_shaders();
         set_parts_hook();   // this one right away
+    } else if (strcmp(key, "Debug") == 0) {
+        g_debug.store(value != 0);
+        save_config();
     } else if (strcmp(key, "PartsFallOff") == 0) {
         g_parts_fall_off.store(value != 0);
         save_config();
@@ -839,6 +893,7 @@ FH2MOD_EXPORT int fh2mod_init(const FH2ModApi* api) {
     logf("FH2 Deform %s: %s, Impact Multiplier %.2f, Dent Depth %.2f, Dents Where Hit %.2f, Crumple %.2f, "
          "Scrape Dents %.2f.", FH2DEFORM_VERSION, g_enabled.load() ? "on" : "off", g_impact_mult.load(),
          g_dent_depth.load(), g_dents_hit.load(), g_crumple.load(), g_scrape.load());
+    install_open_probe();
     apply_surfaces();   // before the game reads its surface types
     request_shaders();  // and its shaders, on a thread (see request_shaders)
 #if FH2DEFORM_PARTS_FALL_OFF
@@ -939,6 +994,21 @@ FH2MOD_EXPORT int fh2mod_init(const FH2ModApi* api) {
                    FH2_TR(api, g_mod, "row.GlassBreaksAt.description",
                           "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."),
                    kMinGlass, kMaxGlass, g_glass_breaks.load());
+        {
+            FH2Setting dbg{};
+            dbg.size          = sizeof(dbg);
+            dbg.key           = "Debug";
+            // L10N(row-label): switch for extra lines in the log
+            dbg.label         = FH2_TR(api, g_mod, "row.Debug.label", "Debug Logging");
+            // L10N(description): what the switch does
+            dbg.description   = FH2_TR(api, g_mod, "row.Debug.description",
+                                       "Writes extra lines to platform.log, for every hit, part drop and push. "
+                                       "Leave it off unless you're reporting a problem.");
+            dbg.value         = g_debug.load() ? 1 : 0;
+            dbg.needs_restart = 0;
+            dbg.on_change     = on_setting_changed;
+            api->add_setting(g_mod, &dbg);
+        }
 #if FH2DEFORM_TEST_KEYS
         {
             FH2Setting st{};

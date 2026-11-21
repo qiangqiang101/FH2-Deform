@@ -27,6 +27,7 @@ MODS > YOUR MODS > FH2Deform, saved in `fh2-mods\FH2Deform.ini`. Changes apply l
 | Crumple | 0 - 2 | 1.0 |
 | Scrape Dents | 0 - 2 | 1.0 |
 | Glass Breaks At | 0.05 - 1.0 | 0.30 (1.0 keeps all glass) |
+| Debug Logging | On / Off | Off (extra lines in `platform.log` for every hit, part drop and push) |
 
 ## Console commands (for testing)
 

@@ -8,7 +8,7 @@ name: Build
 #
 # Run by hand (Actions > Build > Run workflow): the zip is uploaded as an artifact of the run.
 # Publishing a release: the zip is attached to it as FH2Deform-<tag>.zip. The tag has to match the VERSION in
-# CMakeLists.txt (v1.0.0 for 1.0.0), as that's the version the mod reports and the platform compares with GitHub's.
+# CMakeLists.txt (v1.0.1 for 1.0.1), as that's the version the mod reports and the platform compares with GitHub's.
 #
 # The mod builds with MSVC (it reads game memory inside __try/__except), so this runs on Windows. The platform
 # builds with llvm-mingw (Clang), as in its own repo.

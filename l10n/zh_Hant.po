@@ -74,3 +74,11 @@ msgstr "車窗彈出門限"
 msgctxt "row.GlassBreaksAt.description"
 msgid "Windows pop out where the damage there is over this (0.05 to 1): lower breaks them sooner. 1.00: they stay."
 msgstr "車窗會在該處損壞超過此值時彈出(0.05 到 1)：越低越早彈出。1.00：車窗保留。"
+
+msgctxt "row.Debug.label"
+msgid "Debug Logging"
+msgstr "除錯記錄"
+
+msgctxt "row.Debug.description"
+msgid "Writes extra lines to platform.log, for every hit, part drop and push. Leave it off unless you're reporting a problem."
+msgstr "在 platform.log 中寫入額外的記錄，包括每次撞擊、零件脫落與推動。除非要回報問題，否則請保持關閉。"
